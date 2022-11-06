@@ -13,7 +13,7 @@ const App = () => {
 	const addGoalHandler = (enteredText) => {
 		setCourseGoals((prevGoals) => {
 			const updatedGoals = [...prevGoals];
-			updatedGoals.unshift({ text: enteredText, id: "goal1" });
+			updatedGoals.unshift({ text: enteredText, id: Math.random().toString() }); // NOTE: here "goal1" was statically assigned
 			return updatedGoals;
 		});
 	};
@@ -36,13 +36,14 @@ const App = () => {
 	}
 
 	return (
-		
+		// NOTE: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>?
+		<div>
 			<section id="goal-form">
 				<CourseInput onAddGoal={addGoalHandler} />
 			</section>
 			<section id="goals">{content}</section>
-	
-      );
+		</div>
+	);
 };
 
 export default App;
